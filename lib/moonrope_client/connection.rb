@@ -64,6 +64,14 @@ module MoonropeClient
       MoonropeClient::Request.new(self, controller, action, params).make
     end
     
+    def controller(name)
+      MoonropeClient::Controller.new(self, name)
+    end
+    
+    def method_missing(name, value = nil)
+      value.nil? ? self.controller(name) : super
+    end
+    
     #
     # Make a request to the remote API server and return the raw output from
     # the request.
