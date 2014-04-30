@@ -26,7 +26,7 @@ mr = MoonropeClient::Connection.new('myapp.com', :headers => headers, :ssl => tr
 
 # Make a request. In this example, we're making a request to the list action
 # on the users controller.
-response = mr.request(:users, :list)
+response = mr.request(:users, :list, :page => 1)
 ```
 
 The object you get back from calling `request` will determine on the status
