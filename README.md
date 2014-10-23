@@ -12,6 +12,8 @@ To begin, just install the library into your Gemfile and require it.
 gem 'moonrope-client', '~> 1.0.0'
 ```
 
+[![Gem Version](https://badge.fury.io/rb/moonrope-client.svg)](http://badge.fury.io/rb/moonrope-client)
+
 ## Usage
 
 The following instructions demonstrate some of the ways you can interact with
