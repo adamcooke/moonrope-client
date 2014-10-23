@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    moonrope-client (1.0.0)
+    moonrope-client (1.0.2)
       json (~> 1.8, >= 1.8.0)
 
 GEM
@@ -15,4 +15,4 @@ PLATFORMS
 
 DEPENDENCIES
   moonrope-client!
-  yard (>= 0.8.0)
+  yard (~> 0.8, >= 0.8.0)
