@@ -87,7 +87,7 @@ module MoonropeClient
       connection = Net::HTTP.new(self.host, self.port)
       if ssl
         connection.use_ssl = true
-        connection.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        connection.verify_mode = OpenSSL::SSL::VERIFY_PEER
       end
       result = connection.request(request)
       case result.code.to_i
