@@ -12,6 +12,3 @@ require 'moonrope_client/responses/parameter_error'
 require 'moonrope_client/responses/access_denied'
 require 'moonrope_client/responses/validation_error'
 require 'moonrope_client/responses/paginated_collection'
-
-module MoonropeClient
-end
