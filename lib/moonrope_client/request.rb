@@ -1,6 +1,6 @@
 module MoonropeClient
   class Request
-    
+
     #
     # Initialize a new request
     #
@@ -15,21 +15,21 @@ module MoonropeClient
       @action = action.to_sym
       @params = params
     end
-    
+
     attr_reader :params
-    
+
     def make
       raw_data_to_response_object(make_request)
     end
-    
+
     private
-    
+
     def make_request
       params = {:params => @params.to_json}
       path   = "/#{@connection.path_prefix}/v#{@connection.version}/#{@controller}/#{@action}"
       JSON.parse(@connection.raw_request(path, params))
     end
-    
+
     #
     # Convert rhe result of a request into an appropriate response object
     #
@@ -48,6 +48,6 @@ module MoonropeClient
         MoonropeClient::Response.new(self, data)
       end
     end
-    
+
   end
 end

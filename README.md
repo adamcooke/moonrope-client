@@ -1,6 +1,6 @@
 # Moonrope Ruby Client
 
-This is a Ruby client library for interacting with Moonrope-enabled API 
+This is a Ruby client library for interacting with Moonrope-enabled API
 endpoints from Ruby. Using this library is extremely simple and should only
 take a few seconds to get up and running.
 
@@ -48,8 +48,8 @@ response.data           #=> Return the data returned by the API
 
 ### Successful responses
 
-If your request is successful, it will be an instance of a 
-`MoonropeClient::Reponses::Success` and will expose the additional methods 
+If your request is successful, it will be an instance of a
+`MoonropeClient::Reponses::Success` and will expose the additional methods
 shown below:
 
 ```ruby
@@ -82,7 +82,7 @@ response.previous_page  #=> Another PaginatedCollection instance for page + 2
 
 ### Access Denied
 
-If your request is denied, your response will be an instance of 
+If your request is denied, your response will be an instance of
 `MoonropeClient::Responses::AccessDenied` and will have a `message` method
 which will contain the details of your denial.
 
@@ -94,6 +94,6 @@ have a `message` method which will return the details of the error.
 
 ### Validation error
 
-If a validation error has ocurred, response will be an instance of 
+If a validation error has ocurred, response will be an instance of
 `MoonropeClient::Responses::ValidationError`. This will have a `errors` method
 which contains details of the validation errors.
