@@ -46,6 +46,16 @@ response.time           #=> Returns the time to execute the request on the serve
 response.data           #=> Return the data returned by the API
 ```
 
+If your request returns a Bad Request or Internal Server Error, the client will
+raise a `MoonropeClient::Error` exception.
+
+All other requests will return a result object which will differ depending on
+the type result your API returns. These are outlined below.
+
+You may call `request!` or suffix `!` onto the name of the action name (if using
+the shorthand technique shown above) which will ensure that an error is raised
+for all but `success` results.
+
 ### Successful responses
 
 If your request is successful, it will be an instance of a
@@ -97,3 +107,4 @@ have a `message` method which will return the details of the error.
 If a validation error has ocurred, response will be an instance of
 `MoonropeClient::Responses::ValidationError`. This will have a `errors` method
 which contains details of the validation errors.
+

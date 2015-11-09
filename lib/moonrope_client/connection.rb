@@ -64,6 +64,10 @@ module MoonropeClient
       MoonropeClient::Request.new(self, controller, action, params).make
     end
 
+    def request!(controller, action, params = {})
+      MoonropeClient::Request.new(self, controller, action, params).make!
+    end
+
     def controller(name)
       MoonropeClient::Controller.new(self, name)
     end

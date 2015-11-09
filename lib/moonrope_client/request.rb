@@ -1,3 +1,5 @@
+require 'moonrope_client/request_error'
+
 module MoonropeClient
   class Request
 
@@ -20,6 +22,15 @@ module MoonropeClient
 
     def make
       raw_data_to_response_object(make_request)
+    end
+
+    def make!
+      result = raw_data_to_response_object(make_request)
+      if result.success?
+        result
+      else
+        raise MoonropeClient::RequestError.new(result), "Request was not successful. Got #{result.class}"
+      end
     end
 
     private

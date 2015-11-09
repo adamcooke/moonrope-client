@@ -13,7 +13,11 @@ module MoonropeClient
     end
 
     def request(action_name, params = {})
-      @connection.request(@controller_name, action_name, params)
+      if action_name =~ /\A(.*)\!\z/
+        @connection.request!(@controller_name, $1, params)
+      else
+        @connection.request(@controller_name, action_name, params)
+      end
     end
 
   end
