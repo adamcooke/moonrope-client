@@ -54,6 +54,13 @@ module MoonropeClient
     end
 
     #
+    # @return [String] the User-Agent to send with the request
+    #
+    def user_agent
+      @options[:user_agent] || "Moonrope Ruby Library/#{MoonropeClient::VERSION}"
+    end
+
+    #
     # Make a request and return an appropriate request object.
     #
     # @param controller [Symbol] the controller
@@ -86,7 +93,7 @@ module MoonropeClient
     def raw_request(path, params = {})
       request = Net::HTTP::Post.new(path)
       request.set_form_data(params)
-      request.add_field 'User-Agent', "Moonrope Ruby Library/#{MoonropeClient::VERSION}"
+      request.add_field 'User-Agent', self.user_agent
       headers.each { |k,v| request.add_field k, v }
       connection = Net::HTTP.new(self.host, self.port)
       if ssl
