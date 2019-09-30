@@ -1,14 +1,14 @@
 PATH
   remote: .
   specs:
-    moonrope-client (1.0.2)
+    moonrope-client (1.0.4)
       json (~> 1.8, >= 1.8.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    json (1.8.1)
-    yard (0.8.7.4)
+    json (1.8.6)
+    yard (0.9.20)
 
 PLATFORMS
   ruby
@@ -16,3 +16,6 @@ PLATFORMS
 DEPENDENCIES
   moonrope-client!
   yard (~> 0.8, >= 0.8.0)
+
+BUNDLED WITH
+   1.17.3
