@@ -103,8 +103,11 @@ module MoonropeClient
       result = connection.request(request)
       case result.code.to_i
       when 200 then result.body
-      when 400 then raise Error, "Bad request"
-      else          raise Error, "Internal server error occurred"
+      when 400 then raise Error, "Bad request (400)"
+      when 403 then raise Error, "Access denied (403)"
+      when 404 then raise Error, "Page not found (404)"
+      when 500 then raise Error, "Internal server error (500)"
+      else          raise Error, "Unexpected status code #{result.code.to_i}"
       end
     end
 
