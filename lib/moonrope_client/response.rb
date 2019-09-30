@@ -48,5 +48,12 @@ module MoonropeClient
       @data['time']
     end
 
+    #
+    # @return [Strig] the string for representing this response in an exception
+    #
+    def exception_message
+      self.data
+    end
+
   end
 end

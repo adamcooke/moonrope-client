@@ -29,7 +29,7 @@ module MoonropeClient
       if result.success?
         result
       else
-        raise MoonropeClient::RequestError.new(result), "Request was not successful. Got #{result.class}"
+        raise MoonropeClient::RequestError.new(result), "Request was not successful. Got #{result.class} (#{result.exception_message})."
       end
     end
 
