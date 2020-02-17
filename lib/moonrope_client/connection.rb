@@ -96,6 +96,7 @@ module MoonropeClient
       request.add_field 'User-Agent', self.user_agent
       headers.each { |k,v| request.add_field k, v }
       connection = Net::HTTP.new(self.host, self.port)
+      connection.open_timeout = @options[:connect_timeout] || 10
       if ssl
         connection.use_ssl = true
         connection.verify_mode = OpenSSL::SSL::VERIFY_PEER
@@ -103,12 +104,21 @@ module MoonropeClient
       result = connection.request(request)
       case result.code.to_i
       when 200 then result.body
-      when 400 then raise Error, "Bad request (400)"
-      when 403 then raise Error, "Access denied (403)"
-      when 404 then raise Error, "Page not found (404)"
-      when 500 then raise Error, "Internal server error (500)"
-      else          raise Error, "Unexpected status code #{result.code.to_i}"
+      when 400
+        raise Error.new("Bad request (400)", body: result.body)
+      when 403
+        raise Error.new("Access denied (403)", body: result.body)
+      when 404
+        raise Error.new("Page not found (404)", body: result.body)
+      when 301..309
+        raise Error.new("Redirect (#{result.code})", body: result.body, location: result['Location'])
+      when 500
+        raise Error.new("Internal server error (500)", body: result.body)
+      else
+        raise Error.new("Error (#{result.code.to_i})", body: result.body)
       end
+    rescue Net::OpenTimeout
+      raise Error.new("Connection timeout to #{self.host}:#{self.port}")
     end
 
   end
