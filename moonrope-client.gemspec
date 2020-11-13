@@ -11,6 +11,6 @@ Gem::Specification.new do |s|
   s.summary     = "A client library for the the Moonrope API server."
   s.description = "A full client library allows requests to made to Moonrope-enabled API endpoints."
   s.files = Dir["{lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.add_dependency "json", "~> 1.8", ">= 1.8.0"
+  s.add_dependency "json"
   s.licenses    = ["MIT"]
 end

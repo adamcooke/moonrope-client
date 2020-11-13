@@ -2,12 +2,12 @@ PATH
   remote: .
   specs:
     moonrope-client (1.0.4)
-      json (~> 1.8, >= 1.8.0)
+      json
 
 GEM
   remote: https://rubygems.org/
   specs:
-    json (1.8.6)
+    json (2.3.1)
 
 PLATFORMS
   ruby
